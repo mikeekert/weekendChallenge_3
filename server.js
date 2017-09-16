@@ -11,10 +11,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', index);
 app.use('/task', task);
 
-
-
 app.listen(3000, function(){
    console.log('working on:', 3000); 
 });
-
-
