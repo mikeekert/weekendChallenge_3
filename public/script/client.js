@@ -26,7 +26,6 @@ function completeTask() {
 function delTask() {
     var answer = confirm('Are you sure?');
     if (answer) {
-
         delID = {
             id: $(this).parent().parent().data('id'),
         };
