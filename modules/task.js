@@ -20,22 +20,18 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     var input = req.body;
-    
-
     pool.connect(function (err, client, done) {
         if (err) {
             res.sendStatus(500);
         } else {
-            console.log(input);
-            client.query('INSERT INTO weekend3 (name) VALUES ($1)', [input.name], function (err, results) {
-                console.log('added');
+            var text = 'INSERT INTO weekend3 (name) VALUES ($1)';
+            var values = [input.name];
+            client.query(text, values, function (err, results) {
                 done();
                 if (err) {
                     res.sendStatus(500);
-
                 } else {
-                    res.send(results.rows);
-                    console.log('sending res');
+                    res.sendStatus(201);
                 }
             });
         }

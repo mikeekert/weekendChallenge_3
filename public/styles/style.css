@@ -1,0 +1,26 @@
+.main {
+    width:600px;
+    border: 2px;
+    border-style: solid;
+    border-color: lightblue;
+    margin-bottom: 15px;
+}
+
+.card-header {
+    background-color: lightblue;
+    border-bottom: 0;
+    padding: 0;
+    min-height: 30px;
+}
+
+.card-text {
+    display: inline;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.btn {
+    margin: 0 15px;
+}
