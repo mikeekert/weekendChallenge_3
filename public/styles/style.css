@@ -1,26 +1,149 @@
-.main {
+*,::before,::after {
+    box-sizing:border-box;
+    }
+    
+    .btn {
+    margin:0 15px;
+    }
+    
+    .card-body {
+    padding:0;
+    }
+    
+    .card-header {
+    background-color:#ADD8E6;
+    border-bottom:0;
+    min-height:30px;
+    padding:0;
+    }
+    
+    .card-text {
+    display:inline;
+    }
+    
+    .container {
+    background-color:rgba(255,255,255,.2);
+    border-top:5px solid #435757;
+    box-shadow:0 0 20px rgba(0,0,0,.1);
+    margin:0 auto;
+    max-width:450px;
+    user-select:none;
+    }
+    
+    .delButton {
+    float:right;
+    }
+    
+    .fa {
+    cursor:pointer;
+    float:right;
+    font-size:30px;
+    margin-right:15px;
+    position: relative;
+    bottom: -15px;
+    right: 0;
+    }
+    
+    .fa:hover {
+    color:red;
+    }
+    
+    .items {
+    counter-reset:done-items undone-items;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    }
+    
+    .main {
+    border:2px;
+    border-color:#ADD8E6;
+    border-style:solid;
+    margin-bottom:15px;
     width:600px;
-    border: 2px;
-    border-style: solid;
-    border-color: lightblue;
-    margin-bottom: 15px;
-}
-
-.card-header {
-    background-color: lightblue;
-    border-bottom: 0;
-    padding: 0;
-    min-height: 30px;
-}
-
-.card-text {
-    display: inline;
-}
-
-.card-body {
-    padding: 0;
-}
-
-.btn {
-    margin: 0 15px;
-}
+    }
+    
+    .taskIn {
+    margin:0;
+    width:100%;
+    }
+    
+    body {
+    background:#84D8D8;
+    color:#435757;
+    }
+    
+    h1 {
+    background-color:rgba(255,255,255,.4);
+    font-size:1.8em;
+    margin:0;
+    padding:20px;
+    text-align:center;
+    }
+    
+    h2 {
+    font-size:1.2em;
+    margin:10px 0;
+    padding:10px 0;
+    position:relative;
+    }
+    
+    h2::after {
+    display:block;
+    float:right;
+    font-weight:400;
+    }
+    
+    h2::before {
+    background-color:#435757;
+    bottom:10px;
+    display:block;
+    left:-20px;
+    position:absolute;
+    top:10px;
+    width:5px;
+    }
+    
+    html {
+    min-height:100%;
+    }
+    
+    input {
+    display:block;
+    height:53px;
+    margin:0 0 -53px -9999px;
+    order:4;
+    outline:none;
+    }
+    
+    input:checked+label::before {
+    content:'\f058';
+    }
+    
+    label {
+    animation:undone .5s;
+    border-top:1px dashed #fff;
+    cursor:pointer;
+    display:inline-block;
+    font-size:1rem;
+    margin-bottom:0;
+    margin-top:5px;
+    order:4;
+    padding:15px 0 15px 45px;
+    position: relative;
+    width:80%;
+    min-height: 48px;
+    }
+    
+    label::before {
+    content:'\f10c';
+    display:block;
+    font:1.5em FontAwesome;
+    left:10px;
+    position:absolute;
+    top:11px;
+    }
+    
+    label:hover,input:focus+label {
+    background-color:rgba(255,255,255,.2);
+    }
