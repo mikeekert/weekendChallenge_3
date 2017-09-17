@@ -5,7 +5,7 @@ function onReady() {
     console.log('jquery loaded');
     $('.addButton').on('click', addTask);
     $('.container').on('click', 'label', completeTask);
-    // $('.content').on('click', '.delTask', delTask);
+    $('.items').on('click', '.fa', delTask);
     getTasks();
 }
 
@@ -29,7 +29,7 @@ function delTask() {
     var answer = confirm('Are you sure?');
     if (answer) {
         delID = {
-            id: $(this).parent().parent().data('id'),
+            id: $(this).parent().data('id'),
         };
         console.log('Client deleting ID:', delID.id);
         $.ajax({
@@ -84,24 +84,38 @@ function displayTasks(array) {
 
     for (var index = 0; index < array.length; index++) {
         console.log(array[index].complete);
+
         if (array[index].complete) {
             $('.done').append($(('<input>'), {
                 id: 'item' + index,
                 type: 'checkbox',
                 class: 'taskRow'
             }).prop('checked', true));
-            $('.done').append($(('<label>'), {
+
+            var $label = ($(('<label>'), {
                 text: array[index].name
             }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
+
+            $label.append($(('<i>'), {
+                class: 'fa fa-trash-o fa-2'
+            }));
+
+            $('.done').append($label);
+
         } else {
             $('.undone').append($(('<input>'), {
                 id: 'item' + index,
                 type: 'checkbox',
                 class: 'taskRow'
             }).prop('checked', false));
-            $('.undone').append($(('<label>'), {
+
+            var $label2 = ($(('<label>'), {
                 text: array[index].name
             }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
+            $label2.append($(('<i>'), {
+                class: 'fa fa-trash-o fa-2'
+            }));
+            $('.undone').append($label2);
         }
     }
 }
