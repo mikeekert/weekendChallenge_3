@@ -97,6 +97,6 @@ function displayTasks(array) {
             text: 'Delete Task'
         }));
         $display.append($body);
-        $('.content').append($display);
+        $('.items').append($display);
     }
 }

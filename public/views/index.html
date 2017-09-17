@@ -5,16 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>My To-Do List</title>
     <script src="./vendors/jquery-3.2.1.min.js"></script>
     <script src="./script/client.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/font-awesome.css">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
+<div class="container">
+    <h1> TO DO LIST </h1>
+    <div class="items">
+            <input id="item1" type="checkbox" checked>
+            <label for="item1">Create a to-do list</label>
+
+            <h2 class="done" aria-hidden="true">Done</h2>
+            <h2 class="undone" aria-hidden="true">Not Done</h2>
+    </div>
+    
+</div>
+
+
     <div class="input">
         <input type="text" class="taskIn" placeholder="Task">
         <button class="addButton">
