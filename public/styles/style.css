@@ -12,17 +12,16 @@ html {
 
 body {
     color: #435757;
-    background: linear-gradient(-20deg, #B9D3F5 20%, #97D38B 80%);
+    background: #84D8D8;
   }
 h2 {
   position: relative;
-  margin: 0;
+  margin: 10px 0;
   padding: 10px 0;
   font-size: 1.2em;
 }
 
 h2::before {
-    content: '';
     display: block;
     position: absolute;
     top: 10px;
@@ -44,13 +43,8 @@ h2::before {
     margin: 0 0 -53px -9999px;
     order: 4;
     outline: none;
-    counter-increment: undone-items;
   }
   
-  input:checked {
-    order: 2;
-    counter-increment: done-items;  
-  }
   
   label {
     display: block;
@@ -60,10 +54,17 @@ h2::before {
     order: 4;
     cursor: pointer;
     animation: undone .5s;
+    font-size: 1rem;
+  }
+
+.taskIn {
+    width: 100%;
+      margin: 0;
+
   }
   
   label::before {
-    content: '\f10c'; /* circle outline */
+    content: '\f10c'; 
     display: block;
     position: absolute;
     top: 11px;
@@ -75,13 +76,13 @@ h2::before {
     background-color: rgba(255, 255, 255, .2);
   }
   
-  input:checked + label {
-    order: 2;
-    animation: done .5s;
-  }
   
   input:checked + label::before {
-    content: '\f058'; /* circle checkmark */
+    content: '\f058'; 
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
 .card-header {
@@ -126,3 +127,5 @@ h1 {
     padding: 20px;
     counter-reset: done-items undone-items;
   }
+
+  

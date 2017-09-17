@@ -4,15 +4,17 @@ $(document).ready(onReady);
 function onReady() {
     console.log('jquery loaded');
     $('.addButton').on('click', addTask);
-    $('.content').on('click', '.completeTask', completeTask);
-    $('.content').on('click', '.delTask', delTask);
+    $('.container').on('click', 'label', completeTask);
+    // $('.content').on('click', '.delTask', delTask);
     getTasks();
 }
 
 function completeTask() {
     updateID = {
-        id: $(this).parent().parent().data('id'),
+        id: $(this).data('id')
     };
+
+    console.log(updateID);
     $.ajax({
         method: 'PUT',
         url: '/task/',
@@ -69,34 +71,37 @@ function addTask() {
 }
 
 function displayTasks(array) {
-    $('.content').empty();
+    $('.items').html('');
+
+    $('.items').append($(('<h2>'), {
+        text: 'Done',
+        class: 'done'
+    }));
+    $('.items').append($(('<h2>'), {
+        text: 'Not Done',
+        class: 'undone'
+    }));
+
     for (var index = 0; index < array.length; index++) {
-        var $display = ($(('<div>'), {
-            class: 'main'
-        }).data('id', array[index].id));
-        $display.append($(('<div>'), {
-            class: 'card'
-        }));
-        $display.append($(('<h3>'), {
-            class: 'card-header primary-color white-text',
-            text: array[index].name
-        }));
-        var $body = ($(('<div>'), {
-            class: 'card-body'
-        }));
+        console.log(array[index].complete);
         if (array[index].complete) {
-            $body.css('background-color', 'lightgreen');
+            $('.done').append($(('<input>'), {
+                id: 'item' + index,
+                type: 'checkbox',
+                class: 'taskRow'
+            }).prop('checked', true));
+            $('.done').append($(('<label>'), {
+                text: array[index].name
+            }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
         } else {
-            $body.append($(('<button>'), {
-                class: 'btn btn-primary completeTask',
-                text: 'Complete Task'
-            }));
+            $('.undone').append($(('<input>'), {
+                id: 'item' + index,
+                type: 'checkbox',
+                class: 'taskRow'
+            }).prop('checked', false));
+            $('.undone').append($(('<label>'), {
+                text: array[index].name
+            }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
         }
-        $body.append($(('<button>'), {
-            class: 'btn btn-danger delTask',
-            text: 'Delete Task'
-        }));
-        $display.append($body);
-        $('.items').append($display);
     }
 }

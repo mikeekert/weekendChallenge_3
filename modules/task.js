@@ -63,7 +63,8 @@ router.put('/', function (req, res) {
         if (err) {
             res.sendStatus(500);
         } else {
-            client.query('UPDATE "weekend3" SET "complete"=TRUE WHERE "id"=$1', [update], function (err, results) {
+            var string = 'UPDATE weekend3 SET "complete" =NOT "complete" WHERE id = $1';
+            client.query(string, [update], function (err, results) {
                 done();
                 if (err) {
                     res.sendStatus(500);
