@@ -29,7 +29,7 @@ function delTask() {
     var answer = confirm('Are you sure?');
     if (answer) {
         delID = {
-            id: $(this).parent().data('id'),
+            id: $(this).prev('label').data('id'),
         };
         console.log('Client deleting ID:', delID.id);
         $.ajax({
@@ -92,15 +92,14 @@ function displayTasks(array) {
                 class: 'taskRow'
             }).prop('checked', true));
 
-            var $label = ($(('<label>'), {
+            $('.done').append($(('<label>'), {
                 text: array[index].name
             }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
 
-            $label.append($(('<i>'), {
+            $('.done').append($(('<i>'), {
                 class: 'fa fa-trash-o fa-2'
             }));
 
-            $('.done').append($label);
 
         } else {
             $('.undone').append($(('<input>'), {
@@ -109,13 +108,12 @@ function displayTasks(array) {
                 class: 'taskRow'
             }).prop('checked', false));
 
-            var $label2 = ($(('<label>'), {
+            $('.undone').append($(('<label>'), {
                 text: array[index].name
             }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
-            $label2.append($(('<i>'), {
+            $('.undone').append($(('<i>'), {
                 class: 'fa fa-trash-o fa-2'
             }));
-            $('.undone').append($label2);
         }
     }
 }
