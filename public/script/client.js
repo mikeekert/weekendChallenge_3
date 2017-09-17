@@ -29,7 +29,7 @@ function delTask() {
     var answer = confirm('Are you sure?');
     if (answer) {
         delID = {
-            id: $(this).prev('label').data('id'),
+            id: $(this).prev('label ').data('id'),
         };
         console.log('Client deleting ID:', delID.id);
         $.ajax({
