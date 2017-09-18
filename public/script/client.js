@@ -38,7 +38,9 @@ function delTask() {
         title: 'Delete Task?',
         content: '',
         type: 'red',
-        typeAnimated: true,
+        animation: 'opacity',
+        openAnimation: 'opacity',
+        closeAnimation: 'scale',
         buttons: {
             tryAgain: {
                 text: 'Confirm',
@@ -55,7 +57,7 @@ function delTask() {
                     });
                 }
             },
-            close: function () {}
+            cancel: function () {}
         }
     });
 }
