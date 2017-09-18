@@ -38,8 +38,8 @@ function delTask() {
         title: 'Delete Task?',
         content: '',
         type: 'red',
-        animation: 'opacity',
-        openAnimation: 'opacity',
+        backgroundDismiss: true,
+        animation: 'zoom',
         closeAnimation: 'scale',
         buttons: {
             tryAgain: {
@@ -50,14 +50,13 @@ function delTask() {
                         method: 'DELETE',
                         url: '/task/' + delID.id,
                         success: function (resp) {
-                            console.log('deleted ok', resp);
                             getTasks();
-                            $("#myModal").modal('hide');
                         }
                     });
                 }
             },
-            cancel: function () {}
+            cancel: function () {
+            }
         }
     });
 }
