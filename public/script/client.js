@@ -1,5 +1,6 @@
 console.log('js loaded');
 $(document).ready(onReady);
+var modal = $('.myModal');
 
 function onReady() {
     console.log('jquery loaded');
@@ -7,6 +8,12 @@ function onReady() {
     $('.container').on('click', 'label', completeTask);
     $('.items').on('click', '.fa', delTask);
     getTasks();
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 }
 
 function completeTask() {
@@ -26,21 +33,21 @@ function completeTask() {
 }
 
 function delTask() {
-    var answer = confirm('Are you sure?');
-    if (answer) {
-        delID = {
-            id: $(this).prev('label ').data('id'),
-        };
-        console.log('Client deleting ID:', delID.id);
+    delID = {
+        id: $(this).prev('label ').data('id'),
+    };
+    $("#myModal").modal();
+    $('#btnYes').on('click', function () {
         $.ajax({
             method: 'DELETE',
             url: '/task/' + delID.id,
             success: function (resp) {
                 console.log('deleted ok', resp);
                 getTasks();
+                $("#myModal").modal('hide');
             }
         });
-    }
+    });
 }
 
 function getTasks() {
@@ -94,7 +101,7 @@ function displayTasks(array) {
 
             $('.done').append($(('<label>'), {
                 text: array[index].name
-            }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
+            }).prop('for', 'item' + index).data('id', array[index].id).css('display', 'none').fadeIn('slow'));
 
             $('.done').append($(('<i>'), {
                 class: 'fa fa-trash-o fa-2'
@@ -110,7 +117,7 @@ function displayTasks(array) {
 
             $('.undone').append($(('<label>'), {
                 text: array[index].name
-            }).prop('for', 'item' + index).data('id', array[index].id).css('display','none').fadeIn('slow'));
+            }).prop('for', 'item' + index).data('id', array[index].id).css('display', 'none').fadeIn('slow'));
             $('.undone').append($(('<i>'), {
                 class: 'fa fa-trash-o fa-2'
             }));
