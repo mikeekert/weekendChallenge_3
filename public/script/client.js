@@ -35,6 +35,7 @@ function delTask() {
         backgroundDismiss: true,
         theme: 'light',
         smoothContent: true,
+        animation: 'none',
         buttons: {
             tryAgain: {
                 text: 'Confirm',
@@ -96,7 +97,7 @@ function displayTasks(array) {
     for (var index = 0; index < array.length; index++) {
         console.log(array[index].complete);
 
-        if (array[index].complete) {
+        if (array[index].complete) { // check if tasks are done/not done, and append them accordingly
             $('.done').append($(('<input>'), {
                 id: 'item' + index,
                 type: 'checkbox',
