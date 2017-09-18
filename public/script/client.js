@@ -33,7 +33,7 @@ function delTask() {
         content: false,
         type: 'red',
         backgroundDismiss: true,
-        theme: 'light',
+        theme: 'supervan',
         smoothContent: true,
         animation: 'none',
         buttons: {
@@ -128,4 +128,7 @@ function displayTasks(array) {
             }));
         }
     }
+    $('.done > label:first').css('margin-top', '5px');
+    $('.undone > label:first').css('margin-top', '5px');
+    
 }
