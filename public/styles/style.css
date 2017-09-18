@@ -157,13 +157,14 @@ input {
     display: block;
     height: 53px;
     margin: 0 0 -53px -9999px;
-    order: 4;
     outline: none;
+    text-indent: 10px;
 }
 
 input:checked+label::before {
     content: '\f058';
 }
+
 
 label {
     animation: undone .5s;
@@ -172,8 +173,7 @@ label {
     display: inline-block;
     font-size: 1rem;
     margin-bottom: 0;
-    /* margin-top: 5px; */
-    order: 4;
+
     padding: 15px 0 15px 45px;
     position: relative;
     width: 80%;
