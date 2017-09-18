@@ -38,7 +38,9 @@ function delTask() {
         title: 'Delete Task?',
         content: '',
         type: 'red',
-        typeAnimated: true,
+        backgroundDismiss: true,
+        animation: 'zoom',
+        closeAnimation: 'scale',
         buttons: {
             tryAgain: {
                 text: 'Confirm',
@@ -48,14 +50,13 @@ function delTask() {
                         method: 'DELETE',
                         url: '/task/' + delID.id,
                         success: function (resp) {
-                            console.log('deleted ok', resp);
                             getTasks();
-                            $("#myModal").modal('hide');
                         }
                     });
                 }
             },
-            close: function () {}
+            cancel: function () {
+            }
         }
     });
 }
