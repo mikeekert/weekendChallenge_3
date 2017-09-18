@@ -5,7 +5,7 @@ var modal = $('.myModal');
 function onReady() {
     console.log('jquery loaded');
     $('.addButton').on('click', addTask);
-    $('.container').on('click', 'label', completeTask);
+    $('.containerList').on('click', 'label', completeTask);
     $('.items').on('click', '.fa', delTask);
     getTasks();
 
@@ -20,8 +20,6 @@ function completeTask() {
     updateID = {
         id: $(this).data('id')
     };
-
-    console.log(updateID);
     $.ajax({
         method: 'PUT',
         url: '/task/',
@@ -36,17 +34,29 @@ function delTask() {
     delID = {
         id: $(this).prev('label ').data('id'),
     };
-    $("#myModal").modal();
-    $('#btnYes').on('click', function () {
-        $.ajax({
-            method: 'DELETE',
-            url: '/task/' + delID.id,
-            success: function (resp) {
-                console.log('deleted ok', resp);
-                getTasks();
-                $("#myModal").modal('hide');
-            }
-        });
+    $.confirm({
+        title: 'Delete Task?',
+        content: '',
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            tryAgain: {
+                text: 'Confirm',
+                btnClass: 'btn-red',
+                action: function () {
+                    $.ajax({
+                        method: 'DELETE',
+                        url: '/task/' + delID.id,
+                        success: function (resp) {
+                            console.log('deleted ok', resp);
+                            getTasks();
+                            $("#myModal").modal('hide');
+                        }
+                    });
+                }
+            },
+            close: function () {}
+        }
     });
 }
 
@@ -79,7 +89,6 @@ function addTask() {
 
 function displayTasks(array) {
     $('.items').html('');
-
     $('.items').append($(('<h2>'), {
         text: 'Done',
         class: 'done'
