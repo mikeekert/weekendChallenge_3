@@ -1,6 +1,6 @@
 console.log('js loaded');
 $(document).ready(onReady);
-var modal = $('.myModal');
+
 
 function onReady() {
     console.log('jquery loaded');
@@ -8,12 +8,6 @@ function onReady() {
     $('.containerList').on('click', 'label', completeTask);
     $('.items').on('click', '.fa', delTask);
     getTasks();
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
 }
 
 function completeTask() {
