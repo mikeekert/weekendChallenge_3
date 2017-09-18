@@ -10,7 +10,7 @@ function onReady() {
     getTasks();
 }
 
-function completeTask() {
+function completeTask() { // swap tasks complete:true/false
     updateID = {
         id: $(this).data('id')
     };
@@ -24,11 +24,11 @@ function completeTask() {
     });
 }
 
-function delTask() {
+function delTask() { // open modal to delete task
     delID = {
         id: $(this).prev('label ').data('id'),
     };
-    $.confirm({
+    $.confirm({ // jquery-confirm modal
         title: 'Delete Task?',
         content: false,
         type: 'red',
@@ -41,7 +41,7 @@ function delTask() {
                 text: 'Confirm',
                 btnClass: 'btn-red',
                 action: function () {
-                    $.ajax({
+                    $.ajax({ // ajax call
                         method: 'DELETE',
                         url: '/task/' + delID.id,
                         success: function (resp) {
@@ -56,7 +56,7 @@ function delTask() {
     });
 }
 
-function getTasks() {
+function getTasks() { // grab tasks from DB, re-render onto page
     $.ajax({
         method: 'GET',
         url: '/task',
@@ -67,7 +67,7 @@ function getTasks() {
     });
 }
 
-function addTask() {
+function addTask() { // send task to db
     taskIn = {
         name: $('.taskIn').val()
     };
@@ -83,7 +83,7 @@ function addTask() {
     });
 }
 
-function displayTasks(array) {
+function displayTasks(array) { // re-render tasks from db, onto dom, sort into done/not-done
     $('.items').html('');
     $('.items').append($(('<h2>'), {
         text: 'Done',
