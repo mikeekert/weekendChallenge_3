@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var pool = require('./pool');
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res) { // pull tasks from db, return to client
     pool.connect(function (err, client, done) {
         if (err) {
             res.sendStatus(500);
@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/', function (req, res) {
+router.post('/', function (req, res) { // add task to db
     var input = req.body;
     pool.connect(function (err, client, done) {
         if (err) {
@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
     });
 });
 
-router.delete('/:id', function (req, res) {
+router.delete('/:id', function (req, res) { // remove task by ID
     var dbID = req.params.id;
     pool.connect(function (err, client, done) {
         if (err) {
@@ -57,7 +57,7 @@ router.delete('/:id', function (req, res) {
     });
 });
 
-router.put('/', function (req, res) {
+router.put('/', function (req, res) { // swap boolean for 'complete' in db
     var update = req.body.id;
     pool.connect(function (err, client, done) {
         if (err) {
