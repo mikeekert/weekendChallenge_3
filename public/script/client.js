@@ -30,11 +30,11 @@ function delTask() {
     };
     $.confirm({
         title: 'Delete Task?',
-        content: '',
+        content: false,
         type: 'red',
         backgroundDismiss: true,
-        animation: 'zoom',
-        closeAnimation: 'scale',
+        theme: 'light',
+        smoothContent: true,
         buttons: {
             tryAgain: {
                 text: 'Confirm',
