@@ -95,7 +95,6 @@
 }
 
 .items {
-    counter-reset: done-items undone-items;
     display: flex;
     flex-direction: column;
     padding: 20px;
