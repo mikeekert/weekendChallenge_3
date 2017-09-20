@@ -86,13 +86,14 @@ function addTask() { // send task to db
 function displayTasks(array) { // re-render tasks from db, onto dom, sort into done/not-done
     $('.items').html('');
     $('.items').append($(('<h2>'), {
-        text: 'Done',
-        class: 'done'
-    }));
-    $('.items').append($(('<h2>'), {
         text: 'Not Done',
         class: 'undone'
     }));
+    $('.items').append($(('<h2>'), {
+        text: 'Done',
+        class: 'done'
+    }));
+    
 
     for (var index = 0; index < array.length; index++) {
         console.log(array[index].complete);
